@@ -1,0 +1,21 @@
+{
+    "name": "bemulima/yii2-autoposting",
+    "description": "Auto publishing module for social services (VK, OK, FB).",
+    "type": "yii2-extension",
+    "keywords": ["yii2","extension","cross-posting","auto-posting","module"],
+    "license": "BSD-3-Clause",
+    "authors": [
+        {
+            "name": "Marat Dolotov",
+            "email": "bemulima@yandex.ru"
+        }
+    ],
+    "require": {
+        "yiisoft/yii2": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "bemulima\\cross-posting\\": ""
+        }
+    }
+}
