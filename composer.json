@@ -1,8 +1,8 @@
 {
-    "name": "bemulima/yii2-autoposting",
+    "name": "bemulima/yii2-crossposting",
     "description": "Auto publishing module for social services (VK, OK, FB).",
     "type": "yii2-extension",
-    "keywords": ["yii2","extension","cross-posting","auto-posting","module"],
+    "keywords": ["yii2","extension","crossposting","autoposting","module"],
     "license": "BSD-3-Clause",
     "authors": [
         {
@@ -17,7 +17,7 @@
     },
     "autoload": {
         "psr-4": {
-            "bemulima\\cross-posting\\": ""
+            "bemulima\\crossposting\\": ""
         }
     }
 }

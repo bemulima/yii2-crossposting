@@ -6,7 +6,7 @@
  * and open the template in the editor.
  */
 
-namespace bemulima\crossPosting;
+namespace bemulima\crossposting;
 
 /**
  * Description of Fb

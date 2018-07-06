@@ -4,7 +4,7 @@
  * Класс компонет для кросспостинга
  */
 
-namespace bemulima\crossPosting;
+namespace bemulima\crossposting;
 
 use Yii;
 use yii\base\BaseObject;

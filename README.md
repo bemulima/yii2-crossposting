@@ -9,7 +9,7 @@ The preferred way to install this extension is through [composer](http://getcomp
 Either run
 
 ```
-php composer.phar require --prefer-dist bemulima/yii2-autoposting "*"
+php composer.phar require --prefer-dist bemulima/yii2-crossposting "*"
 ```
 
 or add

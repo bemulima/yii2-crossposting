@@ -1,6 +1,6 @@
 <?php
 
-namespace bemulima\crossPosting;
+namespace bemulima\crossposting;
 
 /**
  * crossPosting module definition class
