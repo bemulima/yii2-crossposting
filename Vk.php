@@ -6,10 +6,10 @@
  * and open the template in the editor.
  */
 
-namespace console\modules\crossPosting;
+namespace bemulima\crossposting;
 
 use Yii;
-use console\modules\crossPosting\VkPost;
+use bemulima\crossposting\VkPost;
 /**
  * Description of Vk
  *
@@ -33,8 +33,9 @@ class Vk extends Posting {
         }
         
         $res = [];
-        foreach ($this->wallIDs as $wall) {
-            $vk->groupID = $wall;
+
+        foreach ($this->wallIDs as $wall => $val) {
+            $vk->groupID = $val;
             $res[] = $vk->wallPost($this->text,$attachments);
         }
         

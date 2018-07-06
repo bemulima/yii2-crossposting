@@ -8,13 +8,13 @@
 
 namespace bemulima\crossposting;
 
-use yii\base\BaseObject;
+use yii\base\Component;
 /**
  * Description of Ok
  *
  * @author Programmer
  */
-class OkPost extends BaseObject {
+class OkPost extends Component {
     
     private $access_token    = "tkn1cH7U3pt8ekFoA1mxR2Lfqz8Zgve4WakTW8znpWY2OYXDoUAWOVS7xbti1lyFIFuPb";  // Наш вечный токен
     private $private_key     = "257FD3C5DBF37855D8653657";  // Секретный ключ приложения

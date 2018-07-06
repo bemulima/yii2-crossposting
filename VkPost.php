@@ -6,10 +6,10 @@
  * and open the template in the editor.
  */
 
-namespace console\modules\crossPosting;
+namespace bemulima\crossposting;
 
 use Yii;
-use yii\base\BaseObject;
+use yii\base\Component;
 use yii\base\Exception;
 
 /**
@@ -17,7 +17,7 @@ use yii\base\Exception;
  *
  * @author Programmer
  */
-class VkPost extends  BaseObject {
+class VkPost extends  Component {
     
     
     private $access_token = '';//Постоянный токен для опубликования на стене!

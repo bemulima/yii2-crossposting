@@ -10,7 +10,7 @@ class Module extends \yii\base\Module
     /**
      * @inheritdoc
      */
-    public $controllerNamespace = 'console\modules\crossPosting\controllers';
+    public $controllerNamespace = 'bemulima\crossposting\controllers';
 
     /**
      * @inheritdoc
@@ -25,7 +25,7 @@ class Module extends \yii\base\Module
     public function bootstrap($app)
     {
         if ($app instanceof \yii\console\Application) {
-            $this->controllerNamespace = 'console\modules\crossPosting\commands';
+            $this->controllerNamespace = 'bemulima\crossposting\commands';
         }
     }
 }

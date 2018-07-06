@@ -13,6 +13,6 @@ namespace bemulima\crossposting;
  *
  * @author Programmer
  */
-class FbPost extends \yii\BaseYii {
+class FbPost extends \yii\base\Component {
     //put your code here
 }

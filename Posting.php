@@ -13,7 +13,7 @@ namespace bemulima\crossposting;
  *
  * @author Programmer
  */
-class Posting extends \yii\base\BaseObject implements PostingInterface  {
+class Posting extends \yii\base\Component implements PostingInterface  {
     /**
      * Токен для доступа
      * @var string
