@@ -9,13 +9,13 @@ The preferred way to install this extension is through [composer](http://getcomp
 Either run
 
 ```
-php composer.phar require --prefer-dist bemulima/yii2-cross-posting "*"
+php composer.phar require --prefer-dist bemulima/yii2-autoposting "*"
 ```
 
 or add
 
 ```
-"bemulima/yii2-cross-posting": "*"
+"bemulima/yii2-autoposting": "*"
 ```
 
 to the require section of your `composer.json` file.
