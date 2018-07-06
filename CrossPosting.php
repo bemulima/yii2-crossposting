@@ -127,6 +127,8 @@ class CrossPosting extends Component {
         
         if(!empty($this->_url)){
             $params['url'] = $this->_url;
+        }else{
+            throw new InvalidParamException("Необходимо ввести url.");
         }
         
         if(!empty($this->_images)){
