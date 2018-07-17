@@ -1,5 +1,7 @@
-# cross-posting
-Auto publishing module for social services (Vkontakte, Odnoklassniki, Facebook)
+Yii2-cross-posting
+=======================
+Auto publishing module for social services (VK, OK, FB)
+
 
 Installation
 ------------
@@ -9,13 +11,13 @@ The preferred way to install this extension is through [composer](http://getcomp
 Either run
 
 ```
-php composer.phar require --prefer-dist bemulima/yii2-crossposting "*"
+php composer.phar require --prefer-dist bemulima/yii2-cross-posting "*"
 ```
 
 or add
 
 ```
-"bemulima/yii2-autoposting": "*"
+"bemulima/yii2-cross-posting": "*"
 ```
 
 to the require section of your `composer.json` file.

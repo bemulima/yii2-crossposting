@@ -4,10 +4,10 @@
  * Класс компонет для кросспостинга
  */
 
-namespace bemulima\crossposting;
+namespace bemulima\autoposting;
 
 use Yii;
-use yii\base\Component;
+use yii\base\BaseObject;
 use yii\base\InvalidParamException;
 use yii\web\UrlManager;
 use frontend\config\urlrule\ViewUrlRule;
@@ -16,7 +16,7 @@ use frontend\config\urlrule\ViewUrlRule;
  *
  * @author Programmer
  */
-class CrossPosting extends Component {
+class CrossPosting extends BaseObject {
     
     /**
      * Массив стен, соцсетей
@@ -111,29 +111,17 @@ class CrossPosting extends Component {
             $groups[] = $val;
         }
         
-        $params = [
-            'class' => $this->_services[$name]['class'],
-            'accessToken' => $this->_services[$name]['accessToken'],
-            'privateKey' => $this->_services[$name]['privateKey'],
-            'publicKey' => $this->_services[$name]['publicKey'],
-            'wallIDs' => $groups,
-        ];
             
-        if(!empty($this->_text)){
-            $params['text'] = $this->_text;
-        }else{
-            throw new InvalidParamException("Необходимо ввести текст.");
-        }
-        
-        if(!empty($this->_url)){
-            $params['url'] = $this->_url;
-        }
-        
-        if(!empty($this->_images)){
-            $params['images'] = $this->_images;
-        }
-        
-        return $this->createService($params);
+        return $this->createService([
+                'class' => $this->_services[$name]['class'],
+                'accessToken' => $this->_services[$name]['accessToken'],
+                'privateKey' => $this->_services[$name]['privateKey'],
+                'publicKey' => $this->_services[$name]['publicKey'],
+                'wallIDs' => $groups,
+                'text' => $this->_text,
+                'url' => $this->_url,
+                'images' => $this->_images,
+            ]);
 
     }
     

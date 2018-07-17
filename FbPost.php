@@ -6,13 +6,13 @@
  * and open the template in the editor.
  */
 
-namespace bemulima\crossposting;
+namespace bemulima\autoposting;
 
 /**
  * Description of Fb
  *
  * @author Programmer
  */
-class FbPost extends \yii\base\Component {
+class FbPost extends \yii\BaseYii {
     //put your code here
 }

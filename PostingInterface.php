@@ -4,7 +4,7 @@
  * Интерфэйс для классов автопостинга
  */
 
-namespace bemulima\crossposting;
+namespace bemulima\autoposting;
 
 /**
  *

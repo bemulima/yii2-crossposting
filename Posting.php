@@ -6,14 +6,14 @@
  * and open the template in the editor.
  */
 
-namespace bemulima\crossposting;
+namespace bemulima\autoposting;
 
 /**
  * Description of Posting
  *
  * @author Programmer
  */
-class Posting extends \yii\base\Component implements PostingInterface  {
+class Posting extends \yii\base\BaseObject implements PostingInterface  {
     /**
      * Токен для доступа
      * @var string

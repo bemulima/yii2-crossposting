@@ -1,6 +1,6 @@
 <?php
 
-namespace bemulima\crossposting;
+namespace bemulima\autoposting;
 
 /**
  * crossPosting module definition class
@@ -10,7 +10,7 @@ class Module extends \yii\base\Module
     /**
      * @inheritdoc
      */
-    public $controllerNamespace = 'bemulima\crossposting\controllers';
+    public $controllerNamespace = 'console\modules\crossPosting\controllers';
 
     /**
      * @inheritdoc
@@ -25,7 +25,7 @@ class Module extends \yii\base\Module
     public function bootstrap($app)
     {
         if ($app instanceof \yii\console\Application) {
-            $this->controllerNamespace = 'bemulima\crossposting\commands';
+            $this->controllerNamespace = 'console\modules\crossPosting\commands';
         }
     }
 }
