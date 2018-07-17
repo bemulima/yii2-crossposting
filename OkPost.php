@@ -16,19 +16,23 @@ use yii\base\BaseObject;
  */
 class OkPost extends BaseObject {
     
-    private $access_token    = "tkn1cH7U3pt8ekFoA1mxR2Lfqz8Zgve4WakTW8znpWY2OYXDoUAWOVS7xbti1lyFIFuPb";  // Наш вечный токен
-    private $private_key     = "257FD3C5DBF37855D8653657";  // Секретный ключ приложения
-    private $public_key      = "CBAHJMHDEBABABABA";  // Публичный ключ приложения
-    private $group_id        = "53693728489577";  // ID нашей группы
+    private $access_token    = "";  // Наш вечный токен
+    private $private_key     = "";  // Секретный ключ приложения
+    private $public_key      = "";  // Публичный ключ приложения
+    private $group_id        = "";  // ID нашей группы
     private $step1,$step2,$step3;
-    public $message             = "Автопост тестовое сообщение с сайта на одноклассники";  // Сообщение к посту, можно с переносами строки
+    public $text;  // Сообщение к посту, можно с переносами строки
     public $url;
-    public $images = array();
-    
-    public function __construct($message, $url, $images){
-        $this->message = $message;
-        $this->url = $url;
-        $this->images = $images;
+    public $images = [];
+
+    function setGroupID($group_id) {
+        $this->group_id = $group_id;
+    }
+
+    public function __construct($access_token, $private_key, $public_key){
+        $this->access_token = $access_token;
+        $this->private_key = $private_key;
+        $this->public_key = $public_key;
     }
     
     private function getUrl($url, $params = array(), $timeout = 30, $image = false, $decode = true)
@@ -94,6 +98,7 @@ class OkPost extends BaseObject {
     
     /**
      *  1. Получим адрес для загрузки 1 фото
+     * @return array
      */ 
     public function getImageAddress(){
 
@@ -122,10 +127,11 @@ class OkPost extends BaseObject {
             echo '<pre>1'; print_r($this->step1);
             exit();
         }
-        return $this;
+        return $this->step1;
     }
     /**
      *  2. Закачаем фотку
+     * @return array
      */ 
     public function loadImage(){
         
@@ -141,12 +147,12 @@ class OkPost extends BaseObject {
         
         // Если ошибка
         if (isset($this->step2['error_code'])) {
-            echo '<pre>22'; print_r($this->step1);
-            echo '<pre>22'; print_r($this->step2);
-            echo '<pre>22'; print_r($params);
+            echo '<pre>2'; print_r($this->step1);
+            echo '<pre>2'; print_r($this->step2);
+            echo '<pre>2'; print_r($params);
             exit();
         }
-        return $this;
+        return $this->step2;
     }
     
     /**
@@ -165,14 +171,14 @@ class OkPost extends BaseObject {
         }
         
         // Заменим переносы строк, чтоб не вываливалась ошибка аттача
-        $message_json = str_replace("\n", "\\n", $this->message);
-        
+        $text_json = str_replace("\n", "\\n", $this->text);
+
         // 3. Запостим в группу
         $attachment = '{
                             "media": [
                                 {
                                     "type": "text",
-                                    "text": "'.$message_json.'"
+                                    "text": "'.$text_json.'"
                                 },
                                 '.$photos.'
                                 {
@@ -200,7 +206,7 @@ class OkPost extends BaseObject {
         $params['sig']          = $sig;
         
         $this->step3 = json_decode( $this->getUrl("https://api.ok.ru/fb.do",  $params, 30, false, false ), true);
-        
+
         // Если ошибка
         if (isset($step3['error_code'])) {
             echo '<pre>3'; print_r($this->step3);
@@ -208,14 +214,22 @@ class OkPost extends BaseObject {
         }
         
         // Успешно
-        echo '<pre>last<br/>'; print_r($this->step3);
+        return $this->step3;
     }
-    
-    public static function writing($message, $url, $images){
-        $ok = new OkPost($message, $url, $images);
-        return $ok->getImageAddress()
-                    ->loadImage()
-                    ->loadPost();
+    /**
+     * 
+     * @return array
+     */
+    public function wallPost(){
+        
+        $res = [];
+        
+        if(!empty($this->images)){
+            $res[1] = $this->getImageAddress();
+            $res[2] = $this->loadImage();
+        }
+        $res[3] = $this->loadPost();
+        return $res;
         
     }
 }

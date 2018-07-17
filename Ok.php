@@ -14,5 +14,25 @@ namespace bemulima\autoposting;
  * @author Programmer
  */
 class Ok extends Posting {
-    //put your code here
+    
+    /**
+     * Публикация поста в одноклассники
+     * @return array
+     */
+    public function publish() {
+        $ok = new OkPost($this->accessToken, $this->privateKey, $this->publicKey);
+        $ok->text = $this->text; 
+        
+        $ok->url = $this->url;
+        $ok->images = $this->images;
+        
+        $res = [];
+
+        foreach ($this->wallIDs as $group_id) {
+            $ok->groupID = $group_id;
+            $res[] = $ok->wallPost();
+        }
+        
+        return $res;
+    }
 }

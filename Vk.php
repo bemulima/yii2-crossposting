@@ -28,13 +28,14 @@ class Vk extends Posting {
         if(!empty($this->images)){
             $miniature = $vk->createPhotoAttachment($this->images);
             $attachments =  $vk->combineAttachments( $miniature, Yii::$app->urlManager->createAbsoluteUrl($this->url));
-        }else{
+        }elseif(!empty($this->url)){
             $attachments =  $vk->combineAttachments( Yii::$app->urlManager->createAbsoluteUrl($this->url));
         }
         
         $res = [];
-        foreach ($this->wallIDs as $wall) {
-            $vk->groupID = $wall;
+
+        foreach ($this->wallIDs as $group_id) {
+            $vk->groupID = $group_id;
             $res[] = $vk->wallPost($this->text,$attachments);
         }
         
